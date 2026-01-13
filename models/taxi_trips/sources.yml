@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: tlc_taxi_trips
+    meta:
+      external_location: >
+        (from read_parquet(
+          list_transform(range(1, 12), m ->
+            '/mnt/c/it_growth/dbt/first_dbt/data/yellow_tripdata_2025-'
+            || lpad(CAST(m AS VARCHAR), 2, '0')
+            || '.parquet'
+          )
+        ))
+
+
+
+
+      #external_location : > 
+       # (from read_parquet(
+        #  list_transform (range (1,13),
+         # m -> "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-" || lpad(m::text, 2 , "0") || ".parquet"
+          #)
+        #)) 
+
+
+
+#      external_location: "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-01.parquet"
+      formatter: oldstyle 
+    tables:
+      - name: raw_yellow_trip_data_2025

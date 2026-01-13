@@ -1,0 +1,21 @@
+# dbt artifacts
+target/
+dbt_packages/
+logs/
+
+# DuckDB / data
+*.duckdb
+*.db
+*.parquet
+
+# Python
+.venv/
+__pycache__/
+
+# OS
+.DS_Store
+
+target/
+dbt_packages/
+logs/
+profiles.yml
